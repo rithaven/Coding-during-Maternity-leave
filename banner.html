@@ -7,10 +7,13 @@
 <script>
   document.addEventListener('click',
  function () {
+   let parentElement = document.getElementById("Banner");
+   let myImage = document.createElement("img");
+       myImage.src = 'https://thecatapi.com/api/images/get?format=src&type=gif';
+    parentElement.appendChild(myImage);
+    myImage.style.marginLeft = "160px";
     
- }
-
-  )
+ });
 </script>
 <body>
     <div id="Banner">
