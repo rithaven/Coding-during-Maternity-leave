@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>title</title>
 </head>
-<script>
+<!-- <script>
   document.addEventListener('click',
  function () {
    let parentElement = document.getElementById("Banner");
@@ -19,5 +19,88 @@
     <div id="Banner">
         <h1>Hi Hi</h1>
     </div>
+</body> -->
+
+
+<body>
+<div id="container">
+    <h1 id="header">Welcome to the DOM Manipulation Example</h1>
+    <p class="description">This is a simple example demonstrating various DOM manipulation techniques in JavaScript.</p>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <button id="addButton">Add Item</button>
+    <button id="removeButton">Remove Last Item</button>
+</div>
+<script>
+    // Selecting elements
+    const header = document.getElementById('header');
+    const description = document.querySelector('.description');
+    const list = document.getElementById('list');
+    const addButton = document.getElementById('addButton');
+    const removeButton = document.getElementById('removeButton');
+
+    // Modifying elements
+    header.innerText = 'DOM Manipulation Example Updated';
+    description.textContent = 'This description has been updated using JavaScript.';
+
+    // Adding classes
+    header.classList.add('highlight');
+
+    // Creating and inserting elements
+    function addItem() {
+        const newItem = document.createElement('li');
+        newItem.textContent = `Item ${list.children.length + 1}`;
+        list.appendChild(newItem);
+    }
+
+    // Removing elements
+    function removeItem() {
+        if (list.children.length > 0) {
+            list.removeChild(list.lastElementChild);
+        }
+    }
+
+    // Event handling
+    addButton.addEventListener('click', addItem);
+    removeButton.addEventListener('click', removeItem);
+
+    // Inserting elements before a reference node
+    const newParagraph = document.createElement('p');
+    newParagraph.textContent = 'This paragraph was inserted before the list.';
+    container.insertBefore(newParagraph, list);
+
+    // Setting attributes
+    newParagraph.setAttribute('id', 'newParagraph');
+
+    // Removing attributes
+    newParagraph.removeAttribute('id');
+
+    // Delegated event handling
+    document.getElementById('container').addEventListener('click', function(event) {
+        if (event.target && event.target.matches('li')) {
+            alert(`You clicked on ${event.target.textContent}`);
+        }
+    });
+
+    // Browser compatibility (polyfill example for `remove`)
+    if (!Element.prototype.remove) {
+        Element.prototype.remove = function() {
+            if (this.parentNode) {
+                this.parentNode.removeChild(this);
+            }
+        };
+    }
+
+    // Using `remove` method
+    const oldItem = list.querySelector('li');
+    if (oldItem) {
+        oldItem.remove();
+    }
+</script>
+
+
 </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+</head>
+<body>
+    <div id="container">
+        <h1 id="header">Welcome to the DOM Manipulation Example</h1>
+        <p class="description">This is a simple example demonstrating various DOM manipulation techniques in JavaScript.</p>
+        <ul id="list">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <button id="addButton">Add Item</button>
+        <button id="removeButton">Remove Last Item</button>
+    </div>
+    </body>
+    <script>
+        const getcontainer = document.getElementById('container');
+        const getHeader = document.getElementById('header');
+        const getlist = document.getElementById('list');
+        const getaddbutton = document.getElementById('addButton');
+        const getremovebutton = document.getElementById('removeButton');
+
+
+        document.addEventListener('click', 
+          function () {
+            const myImage = document.createElement('img');
+            myImage.src ='https://thecatapi.com/api/images/get?format=src&type=gif';
+            myImage.style.marginLeft = '160px';
+            getcontainer.append(myImage)
+          }
+        );
+
+        function adding(){
+          const added = document.createElement('li');
+          added.innerText =`Item ${getlist.children.length+1}`;
+          getlist.append(added);
+        }
+        function removing () {
+          if(getlist.children.length>0){
+            getlist.removeChild(getlist.lastElementChild)
+          }
+        }
+        getaddbutton.addEventListener('click', adding);
+        getremovebutton.addEventListener('click', removing);
+    </script>
+    </html>

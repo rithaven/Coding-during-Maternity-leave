@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selection Example</title>
+</head>
+<body>
+    <div id="parent">
+        <div id="myElementId" class="myClassName" name="myElementName">Element with ID</div>
+        <div class="myClassName">Element with Class</div>
+        <div class="myClassName">Another Element with Class</div>
+        <div name="myElementName">Element with Name</div>
+    </div>
+    <script>
+        // Selecting by ID
+        const elementById = document.getElementById('myElementId');
+        console.log(elementById);
+
+        // Selecting by Class Name
+        const elementsByClassName = document.getElementsByClassName('myClassName');
+        console.log(elementsByClassName);
+
+        // Selecting by Tag Name
+        const elementsByTagName = document.getElementsByTagName('div');
+        console.log(elementsByTagName);
+
+        // Selecting by CSS Selector
+        const firstElementBySelector = document.querySelector('.myClassName');
+        console.log(firstElementBySelector);
+
+        const allElementsBySelector = document.querySelectorAll('.myClassName');
+        console.log(allElementsBySelector);
+
+        // Selecting by Name Attribute
+        const elementsByName = document.getElementsByName('myElementName');
+        console.log(elementsByName);
+
+        // Selecting Using Parent-Child Relationships
+        const parentElement = document.getElementById('parent');
+        const childrenElements = parentElement.children;
+        console.log(childrenElements);
+
+        const firstChild = parentElement.firstElementChild;
+        console.log(firstChild);
+
+        const lastChild = parentElement.lastElementChild;
+        console.log(lastChild);
+
+        // Selecting Sibling Elements
+        const nextSibling = elementById.nextElementSibling;
+        console.log(nextSibling);
+
+        const previousSibling = elementById.previousElementSibling;
+        console.log(previousSibling);
+
+        // Selecting Using Closest Ancestor
+        const closestAncestor = elementById.closest('#parent');
+        console.log(closestAncestor);
+
+        // Selecting the Document Root Element
+        const rootElement = document.documentElement;
+        console.log(rootElement);
+
+        // Selecting the Body Element
+        const bodyElement = document.body;
+        console.log(bodyElement);
+
+        // Selecting the Head Element
+        const headElement = document.head;
+        console.log(headElement);
+    </script>
+</body>
+</html>
